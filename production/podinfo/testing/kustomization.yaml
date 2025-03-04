@@ -3,6 +3,6 @@ kind: Kustomization
 metadata:
   name: podinfo-testing-kustomization
 resources:
-  - base/deployment.yaml
-  - base/hpa.yaml
-  - base/service.yaml
+  - deployment.yaml
+  - hpa.yaml
+  - service.yaml
