@@ -12,17 +12,17 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: podinfo
+      app: podinfo-production
   template:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9797"
       labels:
-        app: podinfo
+        app: podinfo-production
     spec:
       containers:
-      - name: podinfod
+      - name: podinfod-production
         image: ghcr.io/stefanprodan/podinfo:6.7.1
         imagePullPolicy: IfNotPresent
         ports:
