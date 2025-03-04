@@ -1,11 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+metadata:
+  name: dicki-deploy-kustomization
 resources:
-  - podinfo/production/deployment.yaml
-  - podinfo/production/hpa.yaml
-  - podinfo/production/service.yaml
-  - podinfo/development/deployment.yaml
-  - podinfo/development/hpa.yaml
-  - podinfo/development/service.yaml    
-  - podinfo/testing/kustomization.yaml
+  - podinfo/production/kustomization.yaml
+  - podinfo/testing/kustomization.yaml  
+  - podinfo/development/kustomization.yaml
   
