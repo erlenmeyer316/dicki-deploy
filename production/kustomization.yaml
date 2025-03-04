@@ -7,5 +7,5 @@ resources:
   - podinfo/development/deployment.yaml
   - podinfo/development/hpa.yaml
   - podinfo/development/service.yaml    
-  - podinfo/testing/kustomization.yaml
+  - podinfo/testing
   
