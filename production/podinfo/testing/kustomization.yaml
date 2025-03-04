@@ -1,4 +1,4 @@
 metadata:
   name: podinfo-testing-kustomization
 resources:
-  - ./base
+  - ./base/kustomization.yaml
