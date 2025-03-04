@@ -1,2 +1,4 @@
+metadata:
+  name: podinfo-testing-kustomization
 resources:
   - ./base
