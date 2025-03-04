@@ -22,7 +22,7 @@ spec:
         app: podinfo-testing
     spec:
       containers:
-      - name: podinfod-testing
+      - name: podinfo-testing
         image: ghcr.io/stefanprodan/podinfo:6.7.1
         imagePullPolicy: IfNotPresent
         ports:
@@ -40,7 +40,7 @@ spec:
         - --port=8787
         - --port-metrics=8686
         - --grpc-port=8888
-        - --grpc-service-name=podinfo
+        - --grpc-service-name=podinfo-testing
         - --level=info
         - --random-delay=false
         - --random-error=false

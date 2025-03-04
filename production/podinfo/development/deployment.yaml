@@ -40,7 +40,7 @@ spec:
         - --port=7676
         - --port-metrics=7575
         - --grpc-port=7777
-        - --grpc-service-name=podinfo
+        - --grpc-service-name=podinfo-development
         - --level=info
         - --random-delay=false
         - --random-error=false

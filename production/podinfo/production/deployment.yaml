@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: podinfo
+  name: podinfo-production
 spec:
   minReadySeconds: 3
   revisionHistoryLimit: 5
@@ -40,7 +40,7 @@ spec:
         - --port=9898
         - --port-metrics=9797
         - --grpc-port=9999
-        - --grpc-service-name=podinfo
+        - --grpc-service-name=podinfo-production
         - --level=info
         - --random-delay=false
         - --random-error=false
