@@ -4,10 +4,8 @@ resources:
   - podinfo/production/deployment.yaml
   - podinfo/production/hpa.yaml
   - podinfo/production/service.yaml
-  - podinfo/testing/deployment.yaml
-  - podinfo/testing/hpa.yaml
-  - podinfo/testing/service.yaml
   - podinfo/development/deployment.yaml
   - podinfo/development/hpa.yaml
   - podinfo/development/service.yaml    
+  - podinfo/testing/kustomization.yaml
   
