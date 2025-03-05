@@ -42,7 +42,6 @@ namespace: dicki-deployment
 labels:
   - pairs:
       overlay: podinfo-overlay-production
-    includeTemplates: true
 
 # add replica count
 replicas:
