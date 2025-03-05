@@ -49,7 +49,7 @@ patches:
       
 
 # add namespace
-namespace: dicki-deployment
+namespace: dicki-deployments
 
 # add replica count
 replicas:
