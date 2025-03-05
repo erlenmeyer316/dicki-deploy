@@ -34,6 +34,12 @@ metadata:
 # add namespace
 namespace: dicki-deployment
 
+# add labels and selectors
+labels:
+  - pairs:
+      environment: podinfo-overlay-production
+    includeTemplates: true
+
 # add replica count
 replicas:
   - name: podinfo
