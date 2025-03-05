@@ -17,13 +17,13 @@ patches:
       - op: replace
         path: /spec/template/spec/containers/0/command
         value: ["./podinfo", "--port=9898", "--port-metrics=9797", "--grpc-port=9999", "--grpc-service-name=podinfo-overlay-production", "--level=info", "--random-deploy=false", "--random-error=false", ""]
-  - target:
-      kind: Deployment
-      name: podinfo
-    patch: |-
-      - op: replace
-        path: /spec/template/metadata/labels/app
-        value: podinfo-overlay-production
+#  - target:
+#      kind: Deployment
+#      name: podinfo
+#    patch: |-
+#      - op: replace
+#        path: /spec/template/metadata/labels/app
+#        value: podinfo-overlay-production
   - target:
       kind: Deployment
       name: podinfo
