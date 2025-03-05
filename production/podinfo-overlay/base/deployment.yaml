@@ -8,7 +8,7 @@ spec:
       app: podinfo
   template:
     metadata:
-      matchLabels:
+      labels:
         app: podinfo
     spec:
       containers:
