@@ -10,35 +10,40 @@ resources:
 
 # patch resources
 patches:
-  - patch: |-
+  - target:
+      kind: Deployment
+    patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/command
         value: ["./podinfo", "--port=9898", "--port-metrics=9797", "--grpc-port=9999", "--grpc-service-name=podinfo-overlay-production", "--level=info", "--random-deploy=false", "--random-error=false", ""]
-    target:
-      version: apps/v1
+  - target:
       kind: Deployment
-      name: podinfo
-  - patch: |-
+    patch: |-
       - op: replace
         path: /spec/template/metadata/labels/app
         value: podinfo-overlay-production
-    target:
-      version: apps/v1
+  - target:
       kind: Deployment
-      name: podinfo  
-
-# add metadata name
-metadata:
-  name: podinfo-overlay-production    
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: podinfo-overlay-production
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/env/*/valueFrom/configMapKeyRef/name
+        value: podinfo-overlay-production-config
+  - target:
+      kind: Service
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: podinfo-overlay-production
+      
 
 # add namespace
 namespace: dicki-deployment
-
-# add labels and selectors
-labels:
-  - pairs:
-      environment: podinfo-overlay-production
-    includeTemplates: true
 
 # add replica count
 replicas:
@@ -54,7 +59,7 @@ images:
 
 # generate configmap used in deployment
 configMapGenerator:
-  - name: podinfo-overlay-config
+  - name: podinfo-overlay-production-config
     literals:
       - PODINFO_UI_COLOR=#f2110a      
       - ENVIRONMENT=podinfo-overlay-production      
