@@ -54,7 +54,7 @@ namespace: dicki-deployments
 # add replica count
 replicas:
   - name: podinfo
-    count: 3
+    count: 1
 
 
 # overlay/change image tag
