@@ -27,11 +27,11 @@ metadata:
 namespace: dicki-deployment
 
 # add labels and selectors
-labels:
-  - pairs:
-      app: podinfo-overlay-production
-      environment: podinfo-overlay-production
-    includeTemplates: true
+#labels:
+#  - pairs:
+#      app: podinfo-overlay-production
+#      environment: podinfo-overlay-production
+#    includeTemplates: true
 
 # add replica count
 replicas:

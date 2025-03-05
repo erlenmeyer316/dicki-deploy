@@ -6,7 +6,6 @@ spec:
   template:
     metadata:
       labels:
-        app: podinfo
     spec:
       containers:
       - name: podinfo
