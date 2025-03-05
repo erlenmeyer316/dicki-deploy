@@ -39,9 +39,9 @@ patches:
 # add namespace
 namespace: dicki-deployment
 
-labels:
-  - pairs:
-      overlay: podinfo-overlay-production
+#labels:
+#  - pairs:
+#      overlay: podinfo-overlay-production
 
 # add replica count
 replicas:
