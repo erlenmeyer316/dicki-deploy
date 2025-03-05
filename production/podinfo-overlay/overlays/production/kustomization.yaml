@@ -53,13 +53,13 @@ namespace: dicki-deployments
 
 # add replica count
 replicas:
-  - name: podinfo-overlay-production
+  - name: podinfo
     count: 3
 
 
 # overlay/change image tag
 images:
-  - name: podinfo-overlay-production
+  - name: podinfo
     newName: ghcr.io/stefanprodan/podinfo
     newTag: 6.7.1
 
