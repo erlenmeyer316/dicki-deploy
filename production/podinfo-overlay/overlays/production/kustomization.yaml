@@ -33,7 +33,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/env/0/valueFrom/configMapKeyRef/name
-        value: podinfo-overlay-production-config
+        value: podinfo-overlay-production
   - target:
       kind: Service
     patch: |-
@@ -59,7 +59,7 @@ images:
 
 # generate configmap used in deployment
 configMapGenerator:
-  - name: podinfo-overlay-production-config
+  - name: podinfo-overlay-production
     literals:
       - PODINFO_UI_COLOR=#f2110a      
       - ENVIRONMENT=podinfo-overlay-production      
