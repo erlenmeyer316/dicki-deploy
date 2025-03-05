@@ -45,6 +45,12 @@ patches:
 # add namespace
 namespace: dicki-deployment
 
+# add labels and selectors
+labels:
+- includeTemplates: true
+  pairs:
+    app: podinfo-overlay-production
+
 # add replica count
 replicas:
   - name: podinfo
