@@ -18,6 +18,14 @@ patches:
       version: apps/v1
       kind: Deployment
       name: podinfo
+  - patch: |-
+      - op: replace
+        path: /spec/template/metadata/labels/app
+        value: podinfo-overlay-production
+    target:
+      version: apps/v1
+      kind: Deployment
+      name: podinfo  
 
 # add metadata name
 metadata:
@@ -25,13 +33,6 @@ metadata:
 
 # add namespace
 namespace: dicki-deployment
-
-# add labels and selectors
-#labels:
-#  - pairs:
-#      app: podinfo-overlay-production
-#      environment: podinfo-overlay-production
-#    includeTemplates: true
 
 # add replica count
 replicas:
