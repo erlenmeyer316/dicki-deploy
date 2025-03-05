@@ -16,50 +16,44 @@ patches:
       - op: replace
         path: /spec/template/spec/containers/0/command
         value: ["./podinfo", "--port=9898", "--port-metrics=9797", "--grpc-port=9999", "--grpc-service-name=podinfo-overlay-production", "--level=info", "--random-deploy=false", "--random-error=false", ""]
-#  - target:
-#      kind: Deployment
-#    patch: |-
-#      - op: replace
-#        path: /spec/template/metadata/labels/app
-#        value: podinfo-overlay-production
-#  - target:
-#      kind: Deployment
-#    patch: |-
-#      - op: replace
-#        path: /metadata/name
-#        value: podinfo-overlay-production
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/template/metadata/labels/app
+        value: podinfo-overlay-production
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: podinfo-overlay-production
   - target:
       kind: Deployment
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/env/0/valueFrom/configMapKeyRef/name
         value: podinfo-overlay-production
-#  - target:
-#      kind: Service
-#    patch: |-
-#      - op: replace
-#        path: /metadata/name
-#        value: podinfo-overlay-production
+  - target:
+      kind: Service
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: podinfo-overlay-production
       
 
 # add namespace
 namespace: dicki-deployment
 
-# add labels and selectors
-labels:
-- includeTemplates: true
-  pairs:
-    app: podinfo-overlay-production
-
 # add replica count
 replicas:
-  - name: podinfo
+  - name: podinfo-overlay-production
     count: 3
 
 
 # overlay/change image tag
 images:
-  - name: podinfo
+  - name: podinfo-overlay-production
     newName: ghcr.io/stefanprodan/podinfo
     newTag: 6.7.1
 
