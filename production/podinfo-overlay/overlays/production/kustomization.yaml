@@ -20,6 +20,18 @@ patches:
       kind: Deployment
     patch: |-
       - op: replace
+        path: /spec/selector/matchLabels/app
+        value: podinfo-overlay-production
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/template/metadata/labels/app
+        value: podinfo-overlay-production
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
         path: /metadata/name
         value: podinfo-overlay-production
   - target:
@@ -38,10 +50,6 @@ patches:
 
 # add namespace
 namespace: dicki-deployment
-
-#labels:
-#  - pairs:
-#      overlay: podinfo-overlay-production
 
 # add replica count
 replicas:
