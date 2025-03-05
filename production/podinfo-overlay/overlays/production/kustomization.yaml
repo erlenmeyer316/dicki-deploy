@@ -22,24 +22,24 @@ patches:
 #      - op: replace
 #        path: /spec/template/metadata/labels/app
 #        value: podinfo-overlay-production
-  - target:
-      kind: Deployment
-    patch: |-
-      - op: replace
-        path: /metadata/name
-        value: podinfo-overlay-production
+#  - target:
+#      kind: Deployment
+#    patch: |-
+#      - op: replace
+#        path: /metadata/name
+#        value: podinfo-overlay-production
   - target:
       kind: Deployment
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/env/0/valueFrom/configMapKeyRef/name
         value: podinfo-overlay-production
-  - target:
-      kind: Service
-    patch: |-
-      - op: replace
-        path: /metadata/name
-        value: podinfo-overlay-production
+#  - target:
+#      kind: Service
+#    patch: |-
+#      - op: replace
+#        path: /metadata/name
+#        value: podinfo-overlay-production
       
 
 # add namespace
