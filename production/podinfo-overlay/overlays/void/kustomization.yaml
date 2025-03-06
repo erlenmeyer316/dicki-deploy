@@ -15,37 +15,37 @@ patches:
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/command
-        value: ["./podinfo", "--port=9898", "--port-metrics=9797", "--grpc-port=9999", "--grpc-service-name=podinfo-overlay-testing", "--level=info", "--random-delay=false", "--random-error=false"]
+        value: ["./podinfo", "--port=9898", "--port-metrics=9797", "--grpc-port=9999", "--grpc-service-name=podinfo-overlay-void", "--level=info", "--random-delay=false", "--random-error=false"]
   - target:
       kind: Deployment
     patch: |-
       - op: replace
         path: /spec/selector/matchLabels/app
-        value: podinfo-overlay-testing
+        value: podinfo-overlay-void
   - target:
       kind: Deployment
     patch: |-
       - op: replace
         path: /spec/template/metadata/labels/app
-        value: podinfo-overlay-testing
+        value: podinfo-overlay-void
   - target:
       kind: Deployment
     patch: |-
       - op: replace
         path: /metadata/name
-        value: podinfo-overlay-testing
+        value: podinfo-overlay-void
   - target:
       kind: Deployment
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/env/0/valueFrom/configMapKeyRef/name
-        value: podinfo-overlay-testing
+        value: podinfo-overlay-void
   - target:
       kind: Service
     patch: |-
       - op: replace
         path: /metadata/name
-        value: podinfo-overlay-testing
+        value: podinfo-overlay-void
       
 
 # add namespace
@@ -65,9 +65,9 @@ images:
 
 # generate configmap used in deployment
 configMapGenerator:
-  - name: podinfo-overlay-testing
+  - name: podinfo-overlay-void
     literals:
       - PODINFO_UI_COLOR=#0af225
-      - ENVIRONMENT=podinfo-overlay-testing      
+      - ENVIRONMENT=podinfo-overlay-void
     options:
       disableNameSuffixHash: true
