@@ -1,0 +1,73 @@
+# base resources to overlay
+resources:
+  - ../../base
+
+
+# Order of operations matter, so....
+# 1. Patches for CRDs
+# 2. Additions
+# 3. Overlays/Changes
+
+# patch resources
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/command
+        value: ["./podinfo", "--port=9898", "--port-metrics=9797", "--grpc-port=9999", "--grpc-service-name=podinfo-overlay-development", "--level=info", "--random-delay=false", "--random-error=false"]
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/selector/matchLabels/app
+        value: podinfo-overlay-development
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/template/metadata/labels/app
+        value: podinfo-overlay-development
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: podinfo-overlay-development
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/env/0/valueFrom/configMapKeyRef/name
+        value: podinfo-overlay-development
+  - target:
+      kind: Service
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: podinfo-overlay-development
+      
+
+# add namespace
+namespace: dicki-deployments
+
+# add replica count
+replicas:
+  - name: podinfo
+    count: 1
+
+
+# overlay/change image tag
+images:
+  - name: podinfo
+    newName: ghcr.io/stefanprodan/podinfo
+    newTag: 6.7.1
+
+# generate configmap used in deployment
+configMapGenerator:
+  - name: podinfo-overlay-development
+    literals:
+      - PODINFO_UI_COLOR=#0a31f2
+      - ENVIRONMENT=podinfo-overlay-development      
+    options:
+      disableNameSuffixHash: true

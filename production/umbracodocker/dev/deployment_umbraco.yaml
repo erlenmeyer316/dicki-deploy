@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: umbracodocker-dev
+  namespace: sem
+  labels:
+    app.kubernetes.io/name: umbracodocker-dev
+    middleware.ocio.osu.edu/billing: sem
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: umbracodocker-dev
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: umbracodocker-dev
+      annotations:
+        app.kubernetes.io/buildtime: osu-1735916919
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: sem-registry-pull
+      containers:
+        - name: umbracodocker-dev
+          image: repo.service.osu.edu:5000/containerservice/customer_flux/flux_sem_cs/umbracopoc
+          imagePullPolicy: Always
+          securityContext:
+            runAsUser: 1000
+          ports:
+            - name: http-alt
+              containerPort: 5000
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://+:5000"
+            - name: ENABLEDEBUGGING
+              value: "true"
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+          volumeMounts:
+            - mountPath: /app/umbraco/Logs/
+              name: umbracodocker-dev-data
+            - mountPath: /app/wwwroot/media/
+              name: umbracodocker-dev-media
+      volumes:
+        - name: umbracodocker-dev-data
+          persistentVolumeClaim:
+            claimName: umbracodocker-dev-data
+        - name: umbracodocker-dev-media
+          persistentVolumeClaim:
+            claimName: umbracodocker-dev-media

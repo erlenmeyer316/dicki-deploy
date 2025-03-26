@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+spec:
+  selector:
+    matchLabels:
+      app: podinfo
+  template:
+    metadata:
+      labels:
+        app: podinfo
+    spec:
+      containers:
+      - name: podinfo
+        image: podinfo:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PODINFO_UI_COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: podinfo-config
+              key: PODINFO_UI_COLOR
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        ports:
+        - name: http
+          containerPort: 9898
+          protocol: TCP
+        - name: http-metrics
+          containerPort: 9797
+          protocol: TCP
+        - name: grpc
+          containerPort: 9999
+          protocol: TCP
+        command:
+        - ./podinfo
+        - --port=9898
+        - --port-metrics=9797
+        - --grpc-port=9999
+        - --grpc-service-name=podinfo
+        - --level=debug
+        - --random-delay=trye
+        - --random-error=true           
+      volumes:
+        - name: data
+          emptyDir: {}

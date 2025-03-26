@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: umbracodocker-dev-configmap
+  namespace: sem
+  labels:
+    app.kubernetes.io/name: sem
+    app: umbracodocker-dev
+data:
+  ConnectionStrings__umbracoDbDSN: Data Source=|DataDirectory|/Umbraco.sqlite.db;Cache=Shared;Foreign Keys=True;Pooling=True
+  ConnectionStrings__umbracoDbDSN_ProviderName: Microsoft.Data.Sqlite
+  Environment: umbracodocker-overlay-development
+  Umbraco__CMS__Unattended__InstallUnattended: "true"
+  Umbraco__CMS__Unattended__UnattendedUserEmail: admin@k8s.net
+  Umbraco__CMS__Unattended__UnattendedUserName: Administrator
+  Umbraco__CMS__Unattended__UnattendedUserPassword: "1234567890"
+

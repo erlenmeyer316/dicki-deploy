@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: podinfo-testing
+spec:
+  type: ClusterIP
+  selector:
+    app: podinfo-testing
+  ports:
+    - name: http
+      port: 8787
+      protocol: TCP
+      targetPort: http
+    - port: 8888
+      targetPort: grpc
+      protocol: TCP
+      name: grpc

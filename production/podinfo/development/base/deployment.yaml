@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo-development
+spec:
+  minReadySeconds: 3
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 60
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: podinfo-development
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "7575"
+      labels:
+        app: podinfo-development
+    spec:
+      containers:
+      - name: podinfod-development
+        image: ghcr.io/stefanprodan/podinfo:6.7.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 7676
+          protocol: TCP
+        - name: http-metrics
+          containerPort: 7575
+          protocol: TCP
+        - name: grpc
+          containerPort: 7777
+          protocol: TCP
+        command:
+        - ./podinfo
+        - --port=7676
+        - --port-metrics=7575
+        - --grpc-port=7777
+        - --grpc-service-name=podinfo-development
+        - --level=info
+        - --random-delay=false
+        - --random-error=false
+        env:
+        - name: PODINFO_UI_COLOR
+          value: "#34577c"
+        livenessProbe:
+          exec:
+            command:
+            - podcli
+            - check
+            - http
+            - localhost:7676/healthz
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+        readinessProbe:
+          exec:
+            command:
+            - podcli
+            - check
+            - http
+            - localhost:7676/readyz
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        volumeMounts:
+          - name: data
+            mountPath: /data
+      volumes:
+        - name: data
+          emptyDir: {}
