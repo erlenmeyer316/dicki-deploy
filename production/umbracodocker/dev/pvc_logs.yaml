@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: umbracodocker-dev-logs
-  namespace: sem
+  namespace:  dicki-deployments
 spec:
   accessModes:
     - ReadOnlyMany
