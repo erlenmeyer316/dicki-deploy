@@ -8,7 +8,6 @@ spec:
     - ReadOnlyMany
   resources:
     requests:
-      storage: 100Mi
+      storage: 1Gi
   storageClassName: managed-nfs-storage 
   volumeMode: Filesystem
-  volumeName: pvc-2e2ce12e-1fb5-4ade-a83b-97ee4523ba9e

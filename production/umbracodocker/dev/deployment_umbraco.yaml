@@ -20,11 +20,11 @@ spec:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       restartPolicy: Always
-      imagePullSecrets:
-        - name: sem-registry-pull
+#      imagePullSecrets:
+#        - name: sem-registry-pull
       containers:
         - name: umbracodocker-dev
-          image: repo.service.osu.edu:5000/containerservice/customer_flux/flux_sem_cs/umbracopoc
+          image: erlenmeyer316/umbraco-v13:latest
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1000
@@ -40,10 +40,15 @@ spec:
               value: Development
           volumeMounts:
             - mountPath: /app/umbraco/Logs/
-              name: umbracodocker-dev-data
+              name: umbracodocker-dev-logs
+            - mountPath: /app/umbraco/Data/
+              name: umbracodocker-dev-data              
             - mountPath: /app/wwwroot/media/
               name: umbracodocker-dev-media
       volumes:
+        - name: umbracodocker-dev-logs
+          persistentVolumeClaim:
+            claimName: umbracodocker-dev-logs
         - name: umbracodocker-dev-data
           persistentVolumeClaim:
             claimName: umbracodocker-dev-data
