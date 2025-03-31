@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: umbracodocker-dev
-  namespace: sem
+  namespace:  dicki-deployments
   labels:
     app.kubernetes.io/name: umbracodocker-dev
-    middleware.ocio.osu.edu/billing: sem
+    middleware.ocio.osu.edu/billing:  dicki-deployments
 spec:
   replicas: 1
   selector:
@@ -21,7 +21,7 @@ spec:
     spec:
       restartPolicy: Always
 #      imagePullSecrets:
-#        - name: sem-registry-pull
+#        - name:  dicki-deployments-registry-pull
       containers:
         - name: umbracodocker-dev
           image: erlenmeyer316/umbraco-v13:latest

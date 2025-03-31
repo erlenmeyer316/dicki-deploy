@@ -2,9 +2,9 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: umbracodocker-dev-configmap
-  namespace: sem
+  namespace:  dicki-deployments
   labels:
-    app.kubernetes.io/name: sem
+    app.kubernetes.io/name:  dicki-deployments
     app: umbracodocker-dev
 data:
   ConnectionStrings__umbracoDbDSN: Data Source=|DataDirectory|/Umbraco.sqlite.db;Cache=Shared;Foreign Keys=True;Pooling=True
