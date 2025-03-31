@@ -9,6 +9,5 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: standard
-  volumeMode: Filesystem
   hostPath:
     path: "/run/desktop/mnt/c/Users/dickison.12/.config/dicki-pv"
