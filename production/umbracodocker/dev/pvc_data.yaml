@@ -9,7 +9,6 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
-  storageClassName: standard
-  volumeMode: Filesystem
+      storage: 300Mi
+  storageClassName: local-storage
   volumeName: pvc-umbracodocker-dev-data
