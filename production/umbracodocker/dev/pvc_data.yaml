@@ -11,3 +11,4 @@ spec:
     requests:
       storage: 300Mi
   storageClassName: local-storage
+  volumeName: local-pv
