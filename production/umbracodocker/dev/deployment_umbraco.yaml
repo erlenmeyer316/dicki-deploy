@@ -24,16 +24,16 @@ spec:
 #        - name:  dicki-deployments-registry-pull
       containers:
         - name: umbracodocker-dev
-          image: erlenmeyer316/umbraco-v13:latest
+          image: erlenmeyer316/umbraco-v13:v00
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1000
           ports:
             - name: http-alt
-              containerPort: 5000
+              containerPort: 80
           env:
             - name: ASPNETCORE_URLS
-              value: "http://+:5000"
+              value: "http://+:80"
             - name: ENABLEDEBUGGING
               value: "true"
             - name: ASPNETCORE_ENVIRONMENT
