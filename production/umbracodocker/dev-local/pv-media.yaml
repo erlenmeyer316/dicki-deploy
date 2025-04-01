@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-media
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce  
+  hostPath:
+    path: /run/desktop/mnt/host/c/Users/dickison.12/.config/dicki-pv/media
+  persistentVolumeReclaimPolicy: Retain      
