@@ -8,5 +8,5 @@ spec:
   accessModes:
     - ReadWriteOnce  
   hostPath:
-    path: /run/desktop/mnt/host/c/Users/dickison.12/.config/dicki-pv/media
+    path: /mnt/c/Users/dickison.12/.config/dicki-pv/media
   persistentVolumeReclaimPolicy: Retain      
