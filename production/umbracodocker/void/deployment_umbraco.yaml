@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: umbracodocker-dev
+  namespace:  dicki-deployments
+  labels:
+    app.kubernetes.io/name: umbracodocker-dev
+    middleware.ocio.osu.edu/billing:  dicki-deployments
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: umbracodocker-dev
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: umbracodocker-dev
+      annotations:
+        app.kubernetes.io/buildtime: osu-0000000000
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      restartPolicy: Always
+#      imagePullSecrets:
+#        - name:  dicki-deployments-registry-pull
+      containers:
+        - name: umbracodocker-dev
+          image: erlenmeyer316/umbraco-v13:v00
+          imagePullPolicy: Always
+          securityContext:
+            runAsUser: 1000
+          ports:
+            - name: http-alt
+              containerPort: 80
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://+:80"
+            - name: ENABLEDEBUGGING
+              value: "true"
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+          volumeMounts:
+            - mountPath: /app/umbraco/Logs/
+              name: umbracodocker-dev-logs
+            - mountPath: /app/umbraco/Data/
+              name: umbracodocker-dev-data              
+            - mountPath: /app/wwwroot/media/
+              name: umbracodocker-dev-media
+      volumes:
+        - name: umbracodocker-dev-logs
+          persistentVolumeClaim:
+            claimName: umbracodocker-dev-logs
+        - name: umbracodocker-dev-data
+          persistentVolumeClaim:
+            claimName: umbracodocker-dev-data
+        - name: umbracodocker-dev-media
+          persistentVolumeClaim:
+            claimName: umbracodocker-dev-media
