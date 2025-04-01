@@ -3,9 +3,6 @@ kind: Kustomization
 resources:
   - configmap_umbraco.yaml
   - deployment_umbraco.yaml
-  - pv-data.yaml
-  - pv-logs.yaml
-  - pv-media.yaml
   - pvc-data.yaml
   - pvc-logs.yaml
   - pvc-media.yaml
