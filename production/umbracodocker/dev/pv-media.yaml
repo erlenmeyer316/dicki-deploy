@@ -5,9 +5,8 @@ metadata:
 spec:
   capacity:
     storage: 1Gi
-  storageClassName: local-storage
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce  
-  hostPath:
-    path: "/run/desktop/mnt/c/Users/dickison.12/.config/dicki-pv/media"
-    type: DirectoryOrCreate
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain    

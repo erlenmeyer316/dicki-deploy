@@ -9,6 +9,6 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 300Mi
-  storageClassName: local-storage
-  volumeName: pv-logs
+      storage: 1Gi
+  storageClassName: standard
+  volumeMode: Filesystem
