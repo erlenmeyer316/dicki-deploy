@@ -8,5 +8,6 @@ spec:
   storageClassName: standard
   accessModes:
     - ReadWriteOnce  
-  persistentVolumeReclaimPolicy: Retain    
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain      
 
