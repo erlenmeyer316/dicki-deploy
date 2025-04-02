@@ -6,7 +6,9 @@ resources:
   - pv-data.yaml
   - pv-logs.yaml
   - pv-media.yaml
+  - pv-usync.yaml  
   - pvc-data.yaml
   - pvc-logs.yaml
   - pvc-media.yaml
+  - pvc-usync.yaml  
   - service.yaml

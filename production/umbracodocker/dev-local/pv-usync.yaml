@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-media
+  name: pv-usync
 spec:
   capacity:
     storage: 1Gi
@@ -10,5 +10,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   hostPath:
-    path: /hostPath/umbraco/wwwroot
-    type: DirectoryOrCreate     
+    path: /hostPath/umbraco/uSync
+    type: DirectoryOrCreate

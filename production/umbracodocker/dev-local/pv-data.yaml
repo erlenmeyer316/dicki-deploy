@@ -6,9 +6,11 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-    - ReadWriteOnce  
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
   hostPath:
-    path: /mnt/c/Users/dickison.12/.config/dicki-pv/Data
-  persistentVolumeReclaimPolicy: Retain      
+    path: /hostPath/umbraco/Data
+    type: DirectoryOrCreate 
 
 
