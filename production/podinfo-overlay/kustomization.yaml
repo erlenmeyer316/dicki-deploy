@@ -1,4 +1,2 @@
 resources:
 - overlays/development
-- overlays/testing
-- overlays/production
