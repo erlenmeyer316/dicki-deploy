@@ -43,9 +43,9 @@ spec:
               name: umbracodocker-dev-logs
             - mountPath: /app/umbraco/Data
               name: umbracodocker-dev-data              
-            - mountPath: /app/wwwroot/media
+            - mountPath: /app/wwwroot
               name: umbracodocker-dev-media
-            - mountPath: /app/wwwroot/uSync
+            - mountPath: /app/uSync
               name: umbracodocker-dev-usync              
       volumes:
         - name: umbracodocker-dev-logs
