@@ -8,7 +8,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
+  storageClassName: standard
   hostPath:
     path: /hostPath/umbraco/wwwroot
     type: DirectoryOrCreate     
