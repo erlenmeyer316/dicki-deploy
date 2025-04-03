@@ -44,7 +44,7 @@ spec:
             - mountPath: /app/umbraco/Data
               name: umbracodocker-dev-data              
             - mountPath: /app/wwwroot
-              name: umbracodocker-dev-media
+              name: umbracodocker-dev-wwwroot
             - mountPath: /app/uSync
               name: umbracodocker-dev-usync              
       volumes:
