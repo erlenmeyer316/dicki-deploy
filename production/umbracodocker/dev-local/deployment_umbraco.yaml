@@ -16,14 +16,14 @@ spec:
       labels:
         app.kubernetes.io/name: umbracodocker-dev
       annotations:
-        app.kubernetes.io/buildtime: osu-0000000002        
+        app.kubernetes.io/buildtime: osu-0000000003
     spec:
       restartPolicy: Always
 #      imagePullSecrets:
 #        - name:  dicki-deployments-registry-pull
       containers:
         - name: umbracodocker-dev
-          image: erlenmeyer316/umbraco-v13:v02
+          image: erlenmeyer316/umbraco-v13:v03
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1000
