@@ -16,7 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: umbracodocker-dev
       annotations:
-        app.kubernetes.io/buildtime: osu-0000000000
+        app.kubernetes.io/buildtime: osu-0000000001
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       restartPolicy: Always
@@ -24,7 +24,7 @@ spec:
 #        - name:  dicki-deployments-registry-pull
       containers:
         - name: umbracodocker-dev
-          image: erlenmeyer316/umbraco-v13:v00
+          image: erlenmeyer316/umbraco-v13:v01
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1000
