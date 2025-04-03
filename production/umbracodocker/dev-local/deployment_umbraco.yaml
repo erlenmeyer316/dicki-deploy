@@ -54,9 +54,9 @@ spec:
         - name: umbracodocker-dev-data
           persistentVolumeClaim:
             claimName: umbracodocker-dev-data
-        - name: umbracodocker-dev-media
+        - name: umbracodocker-dev-wwwroot
           persistentVolumeClaim:
-            claimName: umbracodocker-dev-media
+            claimName: umbracodocker-dev-wwwroot
         - name: umbracodocker-dev-usync
           persistentVolumeClaim:
             claimName: umbracodocker-dev-usync
