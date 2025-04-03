@@ -16,14 +16,14 @@ spec:
       labels:
         app.kubernetes.io/name: umbracodocker-dev
       annotations:
-        app.kubernetes.io/buildtime: osu-0000000005
+        app.kubernetes.io/buildtime: osu-0000000006
     spec:
       restartPolicy: Always
 #      imagePullSecrets:
 #        - name:  dicki-deployments-registry-pull
       containers:
         - name: umbracodocker-dev
-          image: erlenmeyer316/umbraco-v13:v05
+          image: erlenmeyer316/umbraco-v13:v06
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1000
@@ -39,23 +39,23 @@ spec:
               value: Development
           volumeMounts:
             - name: umbracodocker-dev-logs
-              mountPath: /app/umbraco/Logs
+              mountPath: /app/umbraco/Logs/
             - name: umbracodocker-dev-data              
-              mountPath: /app/umbraco/Data
-            - name: umbracodocker-dev-media
-              mountPath: /app/wwwroot/media
+              mountPath: /app/umbraco/Data/
+            - name: umbracodocker-dev-wwwroot
+              mountPath: /app/wwwroot/
             - name: umbracodocker-dev-usync              
-              mountPath: /app/uSync
+              mountPath: /app/uSync/
       volumes:
         - name: umbracodocker-dev-logs
           hostPath:
-            path: /hostPath/umbraco/Logs
+            path: /hostPath/umbraco/Logs/
         - name: umbracodocker-dev-data
           hostPath:
-            path: /hostPath/umbraco/Data
-        - name: umbracodocker-dev-media
+            path: /hostPath/umbraco/Data/
+        - name: umbracodocker-dev-wwwroot
           hostPath:
-            path: /hostPath/wwwroot/media
+            path: /hostPath/wwwroot/
         - name: umbracodocker-dev-usync
           hostPath:
-            path: /hostPath/umbraco/uSync
+            path: /hostPath/umbraco/uSync/
