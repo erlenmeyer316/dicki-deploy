@@ -55,7 +55,7 @@ spec:
             path: /hostPath/umbraco/Data
         - name: umbracodocker-dev-media
           hostPath:
-            path: /hostPath/umbraco/wwwroot/media
+            path: /hostPath/wwwroot/media
         - name: umbracodocker-dev-usync
           hostPath:
             path: /hostPath/umbraco/uSync
