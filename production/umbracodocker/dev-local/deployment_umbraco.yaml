@@ -58,4 +58,4 @@ spec:
             path: /hostPath/wwwroot/
         - name: umbracodocker-dev-usync
           hostPath:
-            path: /hostPath/umbraco/uSync/
+            path: /hostPath/uSync/
