@@ -37,19 +37,9 @@ spec:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
           volumeMounts:
-            - mountPath: /app/umbraco/Logs
-              name: umbracodocker-dev-logs
             - mountPath: /app/umbraco/Data
               name: umbracodocker-dev-data              
-            - mountPath: /app/wwwroot/media
-              name: umbracodocker-dev-wwwroot
       volumes:
-        - name: umbracodocker-dev-logs
-          persistentVolumeClaim:
-            claimName: umbracodocker-dev-logs
         - name: umbracodocker-dev-data
           persistentVolumeClaim:
             claimName: umbracodocker-dev-data
-        - name: umbracodocker-dev-wwwroot
-          persistentVolumeClaim:
-            claimName: umbracodocker-dev-wwwroot
