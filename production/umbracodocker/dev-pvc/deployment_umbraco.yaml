@@ -16,7 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: umbracodocker-dev
       annotations:
-        app.kubernetes.io/buildtime: osu-0000000006
+        app.kubernetes.io/buildtime: osu-0000000007
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       restartPolicy: Always
