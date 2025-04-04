@@ -3,10 +3,12 @@ kind: PersistentVolume
 metadata:
   name: pv-data
 spec:
-  storageClassName: standard
   capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/hostPath/umbraco/Data"
+    path: "/mnt/wsl/umbraco/Data"
+    type: DirectoryOrCreate
+  storageClassName: manual    

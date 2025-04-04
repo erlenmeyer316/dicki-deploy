@@ -3,10 +3,12 @@ kind: PersistentVolume
 metadata:
   name: pv-usync
 spec:
-  storageClassName: standard
+  storageClassName: manual
   capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/hostPath/uSync"
+    path: "/mnt/wsl/uSync"
+    type: DirectoryOrCreate

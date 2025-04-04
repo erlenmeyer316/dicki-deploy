@@ -3,10 +3,12 @@ kind: PersistentVolume
 metadata:
   name: pv-wwwroot
 spec:
-  storageClassName: standard
+  storageClassName: manual
   capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/hostPath/wwwroot/media"
+    path: "/mnt/wsl/wwwroot/media"
+    type: DirectoryOrCreate
