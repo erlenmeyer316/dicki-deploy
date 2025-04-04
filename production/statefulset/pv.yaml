@@ -9,5 +9,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/"  # Replace with your host directory
+    path: "/hostPath/statefulset/"  # Replace with your host directory
     type: DirectoryOrCreate
