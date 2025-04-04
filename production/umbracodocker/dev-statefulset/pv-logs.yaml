@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: my-pv
+  name: pv-logs
 spec:
   capacity:
     storage: 1Gi
-  storageClassName: standard
+  storageClassName: standard    
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/"  # Replace with your host directory
+    path: "/hostPath/umbraco/Logs"
     type: DirectoryOrCreate

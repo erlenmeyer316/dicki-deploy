@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: umbracodocker-dev
+  namespace:  dicki-deployments
+  labels:
+    middleware.ocio.osu.edu/billing:  dicki-deployments
+spec:
+  selector:
+    app.kubernetes.io/name: umbracodocker-dev
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
