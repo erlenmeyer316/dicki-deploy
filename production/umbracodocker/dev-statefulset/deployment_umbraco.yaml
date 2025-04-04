@@ -22,7 +22,7 @@ spec:
 #        - name:  dicki-deployments-registry-pull
       containers:
         - name: umbracodocker-dev
-          image: erlenmeyer316/umbraco-v13:v06
+          image: erlenmeyer316/umbraco-v13:v07
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1000
