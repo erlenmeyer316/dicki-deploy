@@ -13,86 +13,86 @@ spec:
     matchLabels:
       app: supportstats
       component: web
-    serviceName: supportstats
-    template:
+  serviceName: supportstats
+  template:
+    metadata:
+      labels: 
+        app: supportstats
+        component: web
+    spec:
+      containers:
+      - name: app
+        image: gcr.io/images/supportstats:latest
+        ports:
+        - containerPort: 3000
+          name: app
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 2
+          httpGet:
+            path: /meta/app-health
+            port: 3000
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 2
+          timeoutSeconds: 2
+        resources:
+          limits:
+            memory: 250Mi
+          requests:
+            cpu: 150m
+            memory: 250Mi
+        volumeMounts:
+          - mountPath: /data
+            name: data-sqlite
+      - name: zendesk-incremental
+        image: gcr.io/images/supportstats:latest
+        command:
+          - /bin/bash
+          - -C
+          - while true; do rails zendesk: incremental && sleep 10m; done 
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 130Mi
+          requests:
+            cpu: 30m
+            memory: 130Mi
+        volumeMounts:
+          - mountPath: /data
+            name: data-sqlite
+      - name: zendesk-agents
+        image: gcr.io/images/supportstats:latest
+        command:
+          - /bin/bash
+          - -C
+          - while true; do rails zendesk:agents && sleep 1d; done 
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 130Mi
+          requests:
+            cpu: 30m
+            memory: 130Mi
+          volumeMounts:
+            - mountPath: /data
+              name: data-sqlite
+    updateStrategy:
+      rollingUpdate: 
+        partition: 0
+      type: RollingUpdate v
+    volumeClaimTemplates: 
+    - apiVersion: v1
+      kind: PersistentVolumeClaim 
       metadata:
-        labels: 
-          app: supportstats
-          component: web
+        creationTimestamp: null
+        name: data-sqlite
       spec:
-        containers:
-        - name: app
-          image: gcr.io/images/supportstats:latest
-          ports:
-          - containerPort: 3000
-            name: app
-            protocol: TCP
-          readinessProbe:
-            failureThreshold: 2
-            httpGet:
-              path: /meta/app-health
-              port: 3000
-              scheme: HTTP
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            successThreshold: 2
-            timeoutSeconds: 2
-          resources:
-            limits:
-              memory: 250Mi
-            requests:
-              cpu: 150m
-              memory: 250Mi
-          volumeMounts:
-            - mountPath: /data
-              name: data-sqlite
-        - name: zendesk-incremental
-          image: gcr.io/images/supportstats:latest
-          command:
-            - /bin/bash
-            - -C
-            - while true; do rails zendesk: incremental && sleep 10m; done 
-          imagePullPolicy: IfNotPresent
-          resources:
-            limits:
-              memory: 130Mi
-            requests:
-              cpu: 30m
-              memory: 130Mi
-          volumeMounts:
-            - mountPath: /data
-              name: data-sqlite
-        - name: zendesk-agents
-          image: gcr.io/images/supportstats:latest
-          command:
-            - /bin/bash
-            - -C
-            - while true; do rails zendesk:agents && sleep 1d; done 
-          imagePullPolicy: IfNotPresent
-          resources:
-            limits:
-              memory: 130Mi
-            requests:
-              cpu: 30m
-              memory: 130Mi
-            volumeMounts:
-              - mountPath: /data
-                name: data-sqlite
-      updateStrategy:
-        rollingUpdate: 
-          partition: 0
-        type: RollingUpdate v
-      volumeClaimTemplates: 
-      - apiVersion: v1
-        kind: PersistentVolumeClaim 
-        metadata:
-          creationTimestamp: null
-          name: data-sqlite
-        spec:
-          accessModes:
-          - ReadWriteOnce
-          resources:
-            requests:
-              storage: 1Gi
-          storageClassName: standard
-          volumeMode: Filesystem
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: standard
+        volumeMode: Filesystem
