@@ -9,4 +9,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/c/Users/dickison.12/.kind/persistentVolumes/pv-logs"
+    path: "/hostPath/umbraco/Logs"
