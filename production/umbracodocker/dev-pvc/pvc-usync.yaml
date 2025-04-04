@@ -4,7 +4,7 @@ metadata:
   name: umbracodocker-dev-usync
   namespace:  dicki-deployments
 spec:
-  spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
