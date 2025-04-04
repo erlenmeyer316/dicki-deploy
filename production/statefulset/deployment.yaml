@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: my-statefulset
+  namespace: dicki-deployments
 spec:
   replicas: 2  # Or more, as needed
   serviceName: my-service  # Optional, for DNS
