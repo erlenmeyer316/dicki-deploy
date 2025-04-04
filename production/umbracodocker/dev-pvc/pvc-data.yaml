@@ -10,4 +10,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: pv-data      
+  hostPath:
+    path: "/mnt/c/Users/dickison.12/.kind/persistentVolumes/pv-data"  
