@@ -10,5 +10,5 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/mnt/wsl/umbraco/Logs"
+    path: "/mnt/host/wsl/umbraco/Logs"
     type: DirectoryOrCreate
