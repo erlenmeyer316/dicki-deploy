@@ -10,5 +10,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  hostPath:
-    path: "/mnt/c/Users/dickison.12/.kind/persistentVolumes/pv-usync"
+  volumeName: pv-data      
