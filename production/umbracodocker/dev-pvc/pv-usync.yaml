@@ -7,6 +7,6 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     path: "/mnt/c/Users/dickison.12/.kind/persistentVolumes/pv-usync"
