@@ -39,7 +39,13 @@ spec:
           volumeMounts:
             - mountPath: /app/umbraco/Data
               name: umbracodocker-dev-data              
+            - mountPath: /app/wwwroot/media
+              name: umbracodocker-dev-media             
       volumes:
         - name: umbracodocker-dev-data
           persistentVolumeClaim:
             claimName: umbracodocker-dev-data
+        - name: umbracodocker-dev-media
+          persistentVolumeClaim:
+            claimName: umbracodocker-dev-media
+            

@@ -5,8 +5,8 @@ resources:
   - deployment_umbraco.yaml
   - pv-data.yaml
   #- pv-logs.yaml
-  #- pv-wwwroot.yaml
+  - pv-media.yaml
   - pvc-data.yaml
   #- pvc-logs.yaml
-  #- pvc-wwwroot.yaml
+  - pvc-media.yaml
   - service.yaml
