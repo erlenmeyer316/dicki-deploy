@@ -4,7 +4,7 @@ metadata:
   name: umbracodocker-dev-logs
   namespace:  dicki-deployments
 spec:
-  storageClassName: standard
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
