@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-data
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: standard    
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/hostPath/umbraco/Data"
+    type: DirectoryOrCreate

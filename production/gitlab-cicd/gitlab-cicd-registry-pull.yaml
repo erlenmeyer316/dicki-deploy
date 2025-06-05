@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJjb2RlLm9zdS5lZHU6NTAwMCI6eyJ1c2VybmFtZSI6ImRpY2tpc29uLjEyQG9zdS5lZHUiLCJwYXNzd29yZCI6IndaTXpVZnRnVG1VbUZqcHA4Y0JlIiwiZW1haWwiOiJkaWNraXNvbi4xMkBvc3UuZWR1IiwiYXV0aCI6IlpHbGphMmx6YjI0dU1USkFiM04xTG1Wa2RUcDNXazE2VldaMFoxUnRWVzFHYW5Cd09HTkNaUT09In19fQ==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: gitlab-cicd-registry-pull
+  namespace: sem
+type: kubernetes.io/dockerconfigjson

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gitlab-cicd-main
+  namespace:  sem
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: gitlab-cicd-main
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: gitlab-cicd-main
+      annotations:
+        app.kubernetes.io/buildtime: '2025-06-04 15:04:58'
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: gitlab-cicd-registry-pull
+      containers:
+        - name: gitlab-cicd
+          image: code.osu.edu:5000/dickison.12/gitlab-cicd/main:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http-alt
+              containerPort: 80         
