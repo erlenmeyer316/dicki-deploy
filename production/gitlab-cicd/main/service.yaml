@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: gitlab-cicd-main
-  namespace: sem
+  namespace:  dicki-deployments
   labels:
     middleware.ocio.osu.edu/billing: sem
 spec:
